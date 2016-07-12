@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration type="mysql">
+
+	
+
+	<database type="mysql">
+
+		<columnFieldMapper
+			type="com.rapid.j2ee.framework.orm.medium.mapper.EliminateColumnUnderLineFieldMapper" />
+		<columnNamingResolver
+			type="com.rapid.j2ee.framework.orm.medium.mapper.MySqlColumnNamingResolver" />
+
+
+	</database>
+
+	<columntypers>
+		<columnType type="datetime" format="yyyy-MM-dd HH:mm:ss" />
+	</columntypers>
+
+	<columnmappers>
+
+		<tableColumnTypeMapper
+			type="com.rapid.j2ee.framework.orm.medium.table.DefaultTableColumnTypeMapper" />
+
+		<resultSetAcceptors>
+			<!-- You can setup Resultset Acceptor
+				<resultSetAcceptor 	name="UUDTYPE"  type="com.anbang.galaxy.core.orm.medium.getter.StringOutResultSetAcceptor" /> 			
+			-->
+		</resultSetAcceptors>
+
+		<preparedStatementAcceptors>
+			<!-- 
+				<preparedStatementAcceptor 	name="DOUBLE"  type="com.anbang.galaxy.core.orm.medium.statement.StringInPreparedStatementAcceptor" />			
+			 -->
+		</preparedStatementAcceptors>
+
+	</columnmappers>
+
+
+    <autoincreaseid sql="select LAST_INSERT_ID()" />
+
+
+</configuration>

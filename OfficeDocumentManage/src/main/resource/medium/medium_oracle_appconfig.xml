@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration type="oracle">
+
+	<database type="oracle">
+
+		<columnFieldMapper
+			type="com.rapid.j2ee.framework.orm.medium.mapper.EliminateColumnUnderLineFieldMapper" />
+			
+		<columnNamingResolver
+			type="com.rapid.j2ee.framework.orm.medium.mapper.OracleColumnNamingResovler" />
+			
+		<columnOrderResolver
+			type="com.rapid.j2ee.framework.orm.medium.mapper.OracleColumnOrderResovler">
+		</columnOrderResolver>
+
+	</database>
+
+	<columntypers>
+		<columnType type="datetime" format="yyyy-MM-dd HH:mm:ss" />
+	</columntypers>
+
+	<columnmappers>
+
+		<tableColumnTypeMapper
+			type="com.rapid.j2ee.framework.orm.medium.table.OracleTableColumnTypeMapper" />
+
+		<resultSetAcceptors>
+			<!-- You can setup Resultset Acceptor
+				<resultSetAcceptor 	name="String"  type="com.anbang.galaxy.core.orm.medium.getter.StringOutResultSetAcceptor" /> 			
+			-->
+		</resultSetAcceptors>
+
+		<preparedStatementAcceptors>
+			<!-- You can setup Prepared Statement 
+				<preparedStatementAcceptor 	name="String"  type="com.anbang.galaxy.core.orm.medium.statement.StringInPreparedStatementAcceptor" />			
+			-->
+		</preparedStatementAcceptors>
+
+	</columnmappers>
+
+
+    <autoincreaseid sql="select LAST_INSERT_ID()" />
+
+
+</configuration>

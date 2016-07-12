@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>   
+
+<beans xmlns="http://www.springframework.org/schema/beans"  
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+       xmlns:context="http://www.springframework.org/schema/context" 
+       xmlns:p="http://www.springframework.org/schema/p"   
+       xmlns:aop="http://www.springframework.org/schema/aop" 
+       xmlns:meta="http://www.springframework.org/schema/meta"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans   
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   
+           http://www.springframework.org/schema/context   
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd   
+           http://www.springframework.org/schema/aop   
+           http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+           http://www.springframework.org/schema/meta
+		   http://www.springframework.org/schema/meta/spring-meta-3.0.xsd
+		   "  
+>
+
+
+	<bean id="Odm_MediumPersistentBeanScanMapper" init-method="scan" destroy-method="close" 
+		  class="com.rapid.j2ee.framework.orm.medium.mapper.MediumPersistentBeanSmartScanMapper">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="mapperPath" value="classpath*:medium/medium_*_appconfig.xml"></property>
+		<property name="databaseType" value="MYSQL"></property>
+		<property name="packages">
+			<list>
+				<value>com.enclavetechnology.odm.admin.bean</value>
+				<value>com.enclavetechnology.odm.system.bean</value>
+				<value>demo.bean</value>
+			</list>
+		</property>
+		<property name="columnTypeToJavaSourceTypeMapper">
+			<props>	
+				<prop key="DATE">
+					Date
+				</prop>
+				<prop key="DATETIME">
+					Date
+				</prop>
+			</props>	
+		</property>
+	</bean>
+	
+	<bean id="Odm_SessionMapper" class="com.rapid.j2ee.framework.orm.medium.MediumSessionMapper">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<bean id="Odm_MediumSessionDuplicateValidationHandler" 
+		  class="com.rapid.j2ee.framework.bean.duplicator.MediumSessionDuplicateValidationHandler">
+		<property name="mediumSessionMapperOperations" ref="Odm_SessionMapper"></property>
+	</bean>
+</beans>
+
+

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:meta="http://www.springframework.org/schema/meta"
+	
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	http://www.springframework.org/schema/meta
+	http://www.springframework.org/schema/meta/spring-meta-3.0.xsd
+">
+
+
+	
+	<bean id="SecurityAopController" 
+		  class="com.ab.vivat.framework.mvc.security.SecurityAopController"></bean>
+		  
+	<bean id="BehaviorAopController" 
+		 class="com.ab.vivat.framework.mvc.security.BehaviorAopController"></bean>
+	<aop:config proxy-target-class="true">
+	
+		<aop:pointcut id="AllMethodsUnderControllers"
+			expression="within(com.ab.vivat.framework.mvc.security.ButterflyController+)" />
+		<aop:pointcut id="writeLogPointCut"
+			expression="execution(* com.ab.vivat.framework.mvc.security.ActivityController.participate(..))" />
+		<aop:aspect ref="BehaviorAopController">
+			<aop:around method="traceAction" pointcut-ref="AllMethodsUnderControllers"/>
+		</aop:aspect>	
+		
+		<aop:aspect ref="SecurityAopController">
+			<aop:around method="authorize" pointcut-ref="AllMethodsUnderControllers"/>
+		</aop:aspect>	
+		
+	</aop:config>
+</beans>
+
+
