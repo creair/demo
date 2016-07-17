@@ -7,14 +7,14 @@ var App = angular.module('AngularSpringmvcMybatis', ['AngularSpringmvcMybatis.fi
 // Declare app level module which depends on filters, and services
 App.config(['$routeProvider', function ($routeProvider) {
 	
-    $routeProvider.when('/users', {
-        templateUrl: 'users/layout',
-        controller: UserController
-    });
+//    $routeProvider.when('/users', {
+//        templateUrl: 'users/layout',
+//        controller: UserController
+//    });
     
-    $routeProvider.when('/test', {
+    $routeProvider.when('/pageview/getPageView', {
         template: '<h1>test</h1>'
     });
 
-    $routeProvider.otherwise({redirectTo: '/users'});
+    $routeProvider.otherwise({redirectTo: '/pageview/getPageView'});
 }]);

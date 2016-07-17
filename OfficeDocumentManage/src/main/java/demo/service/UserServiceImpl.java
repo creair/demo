@@ -18,7 +18,7 @@ import com.rapid.j2ee.framework.orm.medium.MediumSessionMapperOperations;
 import demo.bean.User;
 import demo.dao.UserDao;
 
-@Service("userService")
+@Service
 @Transactional(noRollbackFor = ApplicationException.class, value = "odm_service")
 public class UserServiceImpl implements UserService {
 

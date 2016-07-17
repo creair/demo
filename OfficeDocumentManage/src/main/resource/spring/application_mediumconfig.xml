@@ -25,9 +25,7 @@
 		<property name="databaseType" value="MYSQL"></property>
 		<property name="packages">
 			<list>
-				<value>com.enclavetechnology.odm.admin.bean</value>
-				<value>com.enclavetechnology.odm.system.bean</value>
-				<value>demo.bean</value>
+				<value>com.enclavetechnology.odm.website.bean</value>
 			</list>
 		</property>
 		<property name="columnTypeToJavaSourceTypeMapper">

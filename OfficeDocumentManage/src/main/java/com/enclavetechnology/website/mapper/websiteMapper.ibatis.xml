@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.enclavetechnology.website.mapper.WebsiteMapper">
+
+	<select id="getPageLocationByPageName"
+			parameterType="String"
+			resultType="com.enclavetechnology.website.bean.PageLocation">
+			
+		SELECT * 
+		  FROM PAGE_INFO 
+		 WHERE PAGE_TITLE = #{pageName}
+	
+	</select>
+	
+	<select id="getLocationContentByPageName"
+			parameterType="String"
+			resultType="com.enclavetechnology.website.bean.LocationContent">
+		
+		SELECT c.* 
+		  FROM PAGE_LOCATION a ,PAGE_INFO b, LOCATION_INFO c
+		 WHERE b.PAGE_TITLE = #{pageName}
+		   AND A.PAGE_ID = B.PAGE_ID
+		   AND B.LOCATION_ID = C.LOCATION_ID
+		
+	</select>
+	
+	
+
+
+
+</mapper> 
